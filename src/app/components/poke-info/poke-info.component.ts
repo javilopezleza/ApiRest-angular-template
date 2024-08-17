@@ -44,7 +44,7 @@ export class PokeInfoComponent {
     this.showSpinner = true; // Muestra el spinner
 
     // Temporizador para ocultar el spinner después de un retraso mínimo
-    const minSpinnerDelay = 2000; // 2 segundos
+    const minSpinnerDelay = 3000; // 2 segundos
     const startTime = Date.now();
 
     this.pokeApi.getPokemonDetails(id).pipe(
