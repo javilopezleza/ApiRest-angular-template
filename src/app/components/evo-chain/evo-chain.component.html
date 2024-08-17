@@ -1,0 +1,11 @@
+<!-- src/app/evo-chain/evo-chain.component.html -->
+<div *ngIf="evolutionChain.length > 0">
+  <h3 class="text-xl font-bold">Cadena de Evolución:</h3>
+  <ul>
+    <li *ngFor="let evolution of evolutionChain">
+      <a href="#" (click)="onPokemonClick(evolution.id)" class="text-dark-500 font-medium underline">
+        {{ evolution.name | titlecase }}
+      </a>
+    </li>
+  </ul>
+</div>

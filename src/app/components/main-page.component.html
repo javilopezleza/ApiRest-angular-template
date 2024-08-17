@@ -1,0 +1,15 @@
+<div class="container mx-auto my-5">
+    <h1 class="text-5xl font-bold">Servicio ApiRest</h1>
+    <h2 class="text-xl my-5">
+      Datos extraídos de 
+      <a class="no-underline hover:underline font-bold" href="https://pokeapi.co/docs/v2">
+        pokeApi
+      </a>
+    </h2>
+    <searchBar (search)="onSearch($event)"></searchBar>
+  </div>
+  
+  <div class="container mx-auto my-5 pokeInfo">
+    <pokeInfo [pokemonDetails]="pokemonDetails"></pokeInfo>
+  </div>
+  

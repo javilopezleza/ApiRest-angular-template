@@ -1,0 +1,10 @@
+<div class="navigation flex justify-between">
+    <button *ngIf="previousPokemonId" (click)="loadPreviousPokemon()"
+        class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition-colors duration-300">
+        Pokémon Anterior (ID: {{ previousPokemonId }})
+    </button>
+    <button *ngIf="nextPokemonId" (click)="loadNextPokemon()"
+        class="px-4 py-2 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-600 transition-colors duration-300">
+        Pokémon Siguiente (ID: {{ nextPokemonId }})
+    </button>
+</div>

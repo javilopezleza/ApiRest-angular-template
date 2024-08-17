@@ -1,0 +1,21 @@
+<!-- src/app/search-bar/search-bar.component.html -->
+<form (ngSubmit)="searchPokemon()" #searchForm="ngForm" class="flex items-center space-x-4">
+    <label for="search" class="hidden">Buscar:</label>
+    <input
+      id="search"
+      [(ngModel)]="pokemonId"
+      name="pokemonId"
+      type="number"
+      class=" flex-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+      placeholder="Introduce un número para realizar un busqueda"
+      min="1"
+      required
+    >
+    <button
+      type="submit"
+      class="px-4 py-2 bg-green-500 text-white rounded shadow-md hover:shadow-lg transition duration-150 ease-in-out hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+    >
+      Buscar
+    </button>
+  </form>
+  
