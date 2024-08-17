@@ -1,0 +1,34 @@
+<!-- pokemon-info.component.html -->
+
+    <h2 class="text-3xl font-bold">{{ pokemonDetails.name | titlecase }}: {{pokemonDetails.id}}</h2>
+  
+    <div class="sprites flex">
+      <div class="default w-full">
+        <h3 class="text-xl font-bold">Normal</h3>
+        <img *ngIf="pokemonDetails.sprites.front_default" 
+             [src]="pokemonDetails.sprites.front_default"
+             alt="{{ pokemonDetails.name }}"
+             class="aspect-w-16 aspect-h-9 w-full">
+        <img *ngIf="pokemonDetails.sprites.back_default" 
+             [src]="pokemonDetails.sprites.back_default"
+             alt="{{ pokemonDetails.name }}"
+             class="aspect-w-16 aspect-h-9 w-full">
+      </div>
+      <div class="shiny w-full">
+        <h3 class="text-xl font-bold">Shiny</h3>
+        <img *ngIf="pokemonDetails.sprites.front_shiny" 
+             [src]="pokemonDetails.sprites.front_shiny"
+             alt="{{ pokemonDetails.name }}"
+             class="aspect-w-16 aspect-h-9 w-full">
+        <img *ngIf="pokemonDetails.sprites.back_shiny" 
+             [src]="pokemonDetails.sprites.back_shiny"
+             alt="{{ pokemonDetails.name }}"
+             class="aspect-w-16 aspect-h-9 w-full">
+      </div>
+    </div>
+  
+    <p class="text-lg">Altura: {{ heightInMeters }} m</p>
+    <p class="text-lg">Peso: {{ weightInKilograms }} kg</p>
+    <p class="text-lg">Experiencia Base: {{ pokemonDetails.base_experience }} XP</p>
+
+  

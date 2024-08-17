@@ -1,62 +1,37 @@
+<!-- Spinner de carga -->
+<div *ngIf="showSpinner" class="spinner-container">
+  <div class="spinner"></div>
+</div>
 
 <!-- Main Info -->
-<div class="flex" *ngIf="pokemonDetails">
+<div class="flex" *ngIf="pokemonDetails && !loading">
+  
   <div class="mainInfo block w-1/4 my-auto">
-    <h2 class="text-3xl font-bold">{{ pokemonDetails.name | titlecase }}: {{pokemonDetails.id}}</h2>
-
-    <div class="sprites flex">
-      <div class="default w-full">
-        <h3 class="text-xl font-bold">Normal</h3>
-        <img *ngIf="pokemonDetails.sprites.front_default" 
-             [src]="pokemonDetails.sprites.front_default"
-             alt="{{ pokemonDetails.name }}"
-             class="aspect-w-16 aspect-h-9 w-full">
-        <img *ngIf="pokemonDetails.sprites.back_default" 
-             [src]="pokemonDetails.sprites.back_default"
-             alt="{{ pokemonDetails.name }}"
-             class="aspect-w-16 aspect-h-9 w-full">
-      </div>
-      <div class="shiny w-full">
-        <h3 class="text-xl font-bold">Shiny</h3>
-        <img *ngIf="pokemonDetails.sprites.front_shiny" 
-             [src]="pokemonDetails.sprites.front_shiny"
-             alt="{{ pokemonDetails.name }}"
-             class="aspect-w-16 aspect-h-9 w-full">
-        <img *ngIf="pokemonDetails.sprites.back_shiny" 
-             [src]="pokemonDetails.sprites.back_shiny"
-             alt="{{ pokemonDetails.name }}"
-             class="aspect-w-16 aspect-h-9 w-full">
-      </div>
-    </div>
-
-    <p class="text-lg">Altura: {{ heightInMeters }} m</p>
-    <p class="text-lg">Peso: {{ weightInKilograms }} kg</p>
-    <p class="text-lg">Experiencia Base: {{ pokemonDetails.base_experience }}
-      XP</p>
+      <mainInfo [pokemonDetails]="pokemonDetails" />
   </div>
 
   <!-- Generations -->
   <div class="gens mx-auto my-auto">
-      <generalInfo [pokemonDetails]="pokemonDetails" />
+    <generalInfo [pokemonDetails]="pokemonDetails" />
   </div>
 
   <!-- Evolution Chain -->
   <div class="evolutionChain block my-auto" *ngIf="pokemonDetails.species?.url">
-      <evoChain
-       [speciesUrl]="pokemonDetails.species.url"
-       (pokemonSelected)="onPokemonSelected($event)"
-       />
+    <evoChain
+      [speciesUrl]="pokemonDetails.species.url"
+      (pokemonSelected)="onPokemonSelected($event)" />
   </div>
 </div>
 
 <!-- Navigation -->
-  <navigation
+<navigation
   [pokemonDetails]="pokemonDetails"
   (loadPokemon)="fetchPokemonDetails($event)"
   />
 
-<div class="my-auto" *ngIf="!pokemonDetails">
 
+<!-- Error handling -->
+<div class="my-auto" *ngIf="!pokemonDetails && !loading">
   <div *ngIf="!initialMessage && notFound" class="flex items-center p-4 mb-4 text-sm text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300 dark:border-yellow-800" role="alert">
     <span class="sr-only">Info</span>
     <div>
