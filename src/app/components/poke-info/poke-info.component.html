@@ -4,34 +4,35 @@
 </div>
 
 <!-- Main Info -->
-<div class="flex" *ngIf="pokemonDetails && !loading">
+<div class="flex flex-wrap justify-around items-center" *ngIf="pokemonDetails && !loading">
   
-  <div class="mainInfo block w-1/4 my-auto">
-      <mainInfo [pokemonDetails]="pokemonDetails" />
+  <!-- Información principal -->
+  <div class="mainInfo w-full md:w-1/3 lg:w-1/4 xl:w-1/5 my-4 text-center md:text-left">
+    <mainInfo [pokemonDetails]="pokemonDetails"></mainInfo>
   </div>
 
-  <!-- Generations -->
-  <div class="gens mx-auto my-auto">
-    <generalInfo [pokemonDetails]="pokemonDetails" />
+  <!-- Información general de generaciones -->
+  <div class="gens w-full md:w-1/3 lg:w-1/2 xl:w-2/5 my-4 text-center md:text-center xl:text-left">
+    <generalInfo [pokemonDetails]="pokemonDetails"></generalInfo>
   </div>
 
-  <!-- Evolution Chain -->
-  <div class="evolutionChain block my-auto" *ngIf="pokemonDetails.species?.url">
+  <!-- Cadena evolutiva -->
+  <div class="evolutionChain w-full md:w-1/3 lg:w-1/2 xl:w-1/5 my-4 text-center md:text-left xl:text-left" *ngIf="pokemonDetails.species?.url">
     <evoChain
       [speciesUrl]="pokemonDetails.species.url"
-      (pokemonSelected)="onPokemonSelected($event)" />
+      (pokemonSelected)="onPokemonSelected($event)"></evoChain>
   </div>
 </div>
 
 <!-- Navigation -->
-<navigation
-  [pokemonDetails]="pokemonDetails"
-  (loadPokemon)="fetchPokemonDetails($event)"
-  />
-
+<div class="my-3 text-center md:text-left">
+  <navigation
+    [pokemonDetails]="pokemonDetails"
+    (loadPokemon)="fetchPokemonDetails($event)"></navigation>
+</div>
 
 <!-- Error handling -->
-<div class="my-auto" *ngIf="!pokemonDetails && !loading">
+<div class="my-auto text-center md:text-left" *ngIf="!pokemonDetails && !loading">
   <div *ngIf="!initialMessage && notFound" class="flex items-center p-4 mb-4 text-sm text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300 dark:border-yellow-800" role="alert">
     <span class="sr-only">Info</span>
     <div>
